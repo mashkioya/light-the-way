@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Light the Way</title>
-</head>
-<body>
+<x-layout title='Welcome'>
     <h1>Welcome to Light the Way!</h1>
     <p>Pull up a chair and stay a while.</p>
-    <ul>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/contact">Contact Us</a></li>
-    </ul>
-</body>
-</html>
+</x-layout>
