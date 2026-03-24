@@ -1,28 +1,40 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Article;
 
-Route::view('/', 'welcome', [
-    'greeting' => "Welcome",
-    'person' => request('person', 'World')
-]);
-Route::view('/about', 'about');
-Route::view('/contact', 'contact');
+Route::get('/', function() {
+    return view('welcome', [
+        'greeting' => "Welcome",
+        'person' => request('person', 'World')
+    ]);
+});
+
+Route::get('/about', function() {
+    return view('about');
+});
+
+Route::get('/contact', function() {
+    return view('contact');
+});
 
 Route::get('/articles', function() {
-    $articles = session()->get('articles', []);
+
+    $articles = Article::all();
     return view('articles', [
         'articles' => $articles,
     ]);
 });
 
 Route::post('/articles', function() {
-    $article = request()->article;
-    session()->push('articles', $article);
+    $article = Article::create([
+        'description' => request()->article,
+    ]);
+
     return redirect('/articles');
 });
 
-// Temporary
+// Temporary (not RESTful)
 Route::get('/delete-articles', function() {
     session()->forget('articles');
     return redirect('/articles');

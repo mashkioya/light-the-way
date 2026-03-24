@@ -16,7 +16,7 @@
         @if (!empty($articles))
             <h2>Current Articles</h2>
             @foreach ($articles as $article)
-                <li>{{ $article }}</li>
+                <li>{{ $article->description }}</li>
             @endforeach
         @endif
 
